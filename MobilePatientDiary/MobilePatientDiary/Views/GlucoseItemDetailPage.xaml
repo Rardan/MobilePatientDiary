@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobilePatientDiary.Views.GlucoseItemDetailPage"
+             Title="{Binding Title}">
+
+    <StackLayout Spacing="20" Padding="20">
+        <Label Text="Data" FontSize="Medium"/>
+        <Label Text="{Binding GlucoseItem.Date}" FontSize="Small"/>
+        <Label Text="Poziom cukru" FontSize="Medium"/>
+        <Label FontSize="Small">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="{Binding GlucoseItem.Amount}" />
+                        <Span Text=" "/>
+                        <Span Text="mg/dL" FontAttributes="Bold"/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+    </StackLayout>
+
+</ContentPage>

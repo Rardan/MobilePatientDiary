@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobilePatientDiary.Views.NewPressureItemPage"
+             Title="Nowy pomiar ciśnienia">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Przerwij" Clicked="Cancel_Clicked"/>
+        <ToolbarItem Text="Zapisz" Clicked="Save_Clicked"/>
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <StackLayout Spacing="20" Padding="15">
+            <Label Text="Ciśnienie skurczowe:" FontSize="Medium"/>
+            <Entry Text="{Binding PressureItem.SystolicPressure}" FontSize="Small" Keyboard="Telephone"/>
+            <Label Text=" mmHg" FontSize="Small"/>
+            <Label Text="Ciśnienie rozkurczowe:" FontSize="Medium"/>
+            <Entry Text="{Binding PressureItem.DiastolicPressure}" FontSize="Small" Keyboard="Telephone"/>
+            <Label Text=" mmHg" FontSize="Small"/>
+            <Label Text="Puls:" FontSize="Medium"/>
+            <Entry Text="{Binding PressureItem.Pulse}" FontSize="Small" Keyboard="Telephone"/>
+            <Label Text=" /min" FontSize="Small"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

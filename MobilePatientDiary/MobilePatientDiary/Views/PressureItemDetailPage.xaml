@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobilePatientDiary.Views.PressureItemDetailPage"
+             Title="{Binding Title}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Usuń" Clicked="DeleteItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+    
+    <StackLayout Spacing="20" Padding="20">
+        <Label Text="Data" FontSize="Medium"/>
+        <Label Text="{Binding PressureItem.Date}" FontSize="Small"/>
+        <Label Text="Ciśnienie skurczowe:" FontSize="Medium"/>
+        <Label FontSize="Small">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="{Binding PressureItem.SystolicPressure}" />
+                        <Span Text=" "/>
+                        <Span Text="mmHg" FontAttributes="Bold"/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label Text="Ciśnienie rozkurczowe:" FontSize="Medium"/>
+        <Label FontSize="Small">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="{Binding PressureItem.DiastolicPressure}" />
+                        <Span Text=" "/>
+                        <Span Text="mmHg" FontAttributes="Bold"/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label Text="Puls:" FontSize="Medium"/>
+        <Label FontSize="Small">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="{Binding PressureItem.Pulse}" />
+                        <Span Text=" "/>
+                        <Span Text="/min" FontAttributes="Bold"/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+    </StackLayout>
+</ContentPage>
