@@ -12,5 +12,7 @@ namespace MobilePatientDiary.Views
         {
             InitializeComponent();
         }
+
+        
     }
 }

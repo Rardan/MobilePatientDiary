@@ -16,6 +16,7 @@ namespace MobilePatientDiary.Data
             _database = new SQLiteAsyncConnection(dbPath);
             _database.CreateTableAsync<PressureItem>().Wait();
             _database.CreateTableAsync<GlucoseItem>().Wait();
+            _database.CreateTableAsync<NotificationItem>().Wait();
         }
 
         public Task<List<PressureItem>> GetPresureItemsAsync()
@@ -70,6 +71,34 @@ namespace MobilePatientDiary.Data
         }
 
         public Task<int> DeleteGlucoseItemAsync(GlucoseItem item)
+        {
+            return _database.DeleteAsync(item);
+        }
+
+        public Task<List<NotificationItem>> GetNotificationItemsAsync()
+        {
+            return _database.Table<NotificationItem>().ToListAsync();
+        }
+
+        public Task<NotificationItem> GetNotificationItemAsync(int id)
+        {
+            return _database.Table<NotificationItem>()
+                .FirstOrDefaultAsync(i => i.Id == id);
+        }
+
+        public Task<int> SaveNotificationItemAsync(NotificationItem item)
+        {
+            if (item.Id != -1)
+            {
+                return _database.UpdateAsync(item);
+            }
+            else
+            {
+                return _database.InsertAsync(item);
+            }
+        }
+
+        public Task<int> DeleteNotificationItemAsync(NotificationItem item)
         {
             return _database.DeleteAsync(item);
         }

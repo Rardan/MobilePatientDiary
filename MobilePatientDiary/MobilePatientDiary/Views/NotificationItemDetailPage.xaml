@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobilePatientDiary.Views.NotificationItemDetailPage"
+             Title="{Binding Title}">
+
+    <StackLayout Spacing="20" Padding="20">
+        <Label Text="Godzina" FontSize="Medium"/>
+        <Label Text="{Binding NotificationItem.Time, StringFormat='{}{0:hh\\:mm}'}" FontSize="Small"/>
+        <Label Text="Nazwa leku" FontSize="Medium"/>
+        <Label Text="{Binding NotificationItem.MedicineName}" FontSize="Small"/>
+        <Label Text="Dawka" FontSize="Medium"/>
+        <Label FontSize="Small">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="{Binding NotificationItem.MedicineDose}"/>
+                        <Span Text=" "/>
+                        <Span Text="tabletek" FontAttributes="Bold"/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Button Text="Testowe powiadomienie" Clicked="Button_Clicked"/>
+    </StackLayout>
+
+</ContentPage>

@@ -4,6 +4,9 @@ using Xamarin.Forms.Xaml;
 using MobilePatientDiary.Views;
 using MobilePatientDiary.Data;
 using System.IO;
+using System.Threading.Tasks;
+using MobilePatientDiary.Services;
+using MobilePatientDiary.Models;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace MobilePatientDiary
@@ -11,6 +14,7 @@ namespace MobilePatientDiary
     public partial class App : Application
     {
         static AppDatabase database;
+        INotificationManager notificationManager;
 
         public static AppDatabase Database
         {
@@ -31,8 +35,15 @@ namespace MobilePatientDiary
         {
             InitializeComponent();
 
+            notificationManager = DependencyService.Get<INotificationManager>();
+            notificationManager.NotificationReceived += (sender, eventArgs) =>
+            {
+                var evtData = (NotificationEventArgs)eventArgs;
+            };
 
             MainPage = new MainPage();
+
+            Task.Run(async () => await Notifications());
         }
 
         protected override void OnStart()
@@ -48,6 +59,33 @@ namespace MobilePatientDiary
         protected override void OnResume()
         {
             // Handle when your app resumes
+        }
+
+        async Task Notifications()
+        {
+            while(true)
+            {
+                DateTime dateTime = DateTime.Now;
+                var notifications = await Database.GetNotificationItemsAsync();
+                foreach(var item in notifications)
+                {
+                    if(item.Time.Hours == dateTime.Hour && item.Time.Minutes == dateTime.Minute && item.Time.Seconds == dateTime.Second && item.Time.Milliseconds == dateTime.Millisecond)
+                    {
+                        if(item.IsSended==false)
+                        {
+                            string title = $"Przypomnienie o lekach";
+                            string message = $"{item.MedicineName} – {item.MedicineDose} tabletek";
+                            notificationManager.ScheduleNotification(title, message);
+                            item.IsSended = true;
+                            await Task.Delay(1);
+                        }
+                    }
+                    else
+                    {
+                        item.IsSended = false;
+                    }
+                }
+            }
         }
     }
 }

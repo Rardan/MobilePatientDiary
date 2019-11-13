@@ -9,6 +9,7 @@ namespace MobilePatientDiary.Models
      //   Browse,
         Pressure,
         Glucose,
+        Notification,
         About
     }
     public class HomeMenuItem

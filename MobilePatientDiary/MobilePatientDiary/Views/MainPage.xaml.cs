@@ -26,9 +26,6 @@ namespace MobilePatientDiary.Views
             {
                 switch (id)
                 {
-                    //case (int)MenuItemType.Browse:
-                    //    MenuPages.Add(id, new NavigationPage(new ItemsPage()));
-                    //    break;
                     case (int)MenuItemType.Pressure:
                         MenuPages.Add(id, new NavigationPage(new PressureItemsPage()));
                         break;
@@ -37,6 +34,9 @@ namespace MobilePatientDiary.Views
                         break;
                     case (int)MenuItemType.About:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                        break;
+                    case (int)MenuItemType.Notification:
+                        MenuPages.Add(id, new NavigationPage(new NotificationItemsPage()));
                         break;
                 }
             }
