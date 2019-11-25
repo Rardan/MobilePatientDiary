@@ -27,6 +27,13 @@ namespace MobilePatientDiary.ViewModels
                 NotificationItems.Add(newItem);
                 await App.Database.SaveNotificationItemAsync(newItem);
             });
+
+            MessagingCenter.Subscribe<NotificationItemDetailPage, NotificationItem>(this, "DeleteNotificationItem", async (obj, i) =>
+            {
+                var oldItem = i as NotificationItem;
+                NotificationItems.Remove(oldItem);
+                await App.Database.DeleteNotificationItemAsync(oldItem);
+            });
         }
 
         async Task ExecuteLoadItemsCommand()

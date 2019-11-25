@@ -36,5 +36,11 @@ namespace MobilePatientDiary.Views
             viewModel = new GlucoseItemDetailViewModel(glucoseItem);
             BindingContext = viewModel;
         }
+
+        async void DeleteItem_Clicked(object sender, EventArgs args)
+        {
+            MessagingCenter.Send(this, "DeleteGlucoseItem", viewModel.GlucoseItem);
+            await Navigation.PopToRootAsync();
+        }
     }
 }

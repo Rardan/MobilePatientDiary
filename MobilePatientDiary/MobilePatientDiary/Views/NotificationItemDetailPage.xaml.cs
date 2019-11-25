@@ -58,5 +58,11 @@ namespace MobilePatientDiary.Views
             string message = $"{viewModel.NotificationItem.MedicineName}: {viewModel.NotificationItem.MedicineDose} tabletek";
             notificationManager.ScheduleNotification(title, message);
         }
+
+        async void DeleteItem_Clicked(object sender, EventArgs args)
+        {
+            MessagingCenter.Send(this, "DeleteNotificationItem", viewModel.NotificationItem);
+            await Navigation.PopToRootAsync();
+        }
     }
 }

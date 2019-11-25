@@ -17,6 +17,7 @@ namespace MobilePatientDiary.Data
             _database.CreateTableAsync<PressureItem>().Wait();
             _database.CreateTableAsync<GlucoseItem>().Wait();
             _database.CreateTableAsync<NotificationItem>().Wait();
+            _database.CreateTableAsync<VisitItem>().Wait();
         }
 
         public Task<List<PressureItem>> GetPresureItemsAsync()
@@ -99,6 +100,34 @@ namespace MobilePatientDiary.Data
         }
 
         public Task<int> DeleteNotificationItemAsync(NotificationItem item)
+        {
+            return _database.DeleteAsync(item);
+        }
+        
+        public Task<List<VisitItem>> GetVisitItemsAsync()
+        {
+            return _database.Table<VisitItem>().ToListAsync();
+        }
+
+        public Task<VisitItem> GetVisitItemAsync(int id)
+        {
+            return _database.Table<VisitItem>()
+                .FirstOrDefaultAsync(i => i.Id == id);
+        }
+
+        public Task<int> SaveVisitItemAsync(VisitItem item)
+        {
+            if (item.Id != -1)
+            {
+                return _database.UpdateAsync(item);
+            }
+            else
+            {
+                return _database.InsertAsync(item);
+            }
+        }
+
+        public Task<int> DeleteVisitItemAsync(VisitItem item)
         {
             return _database.DeleteAsync(item);
         }

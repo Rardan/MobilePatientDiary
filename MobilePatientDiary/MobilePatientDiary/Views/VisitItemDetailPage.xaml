@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobilePatientDiary.Views.VisitItemDetailPage"
+             Title="{Binding Title}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Usuń" Clicked="DeleteItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+    <StackLayout Spacing="20" Padding="20">
+        <Label Text="Specjalność lekarza" FontSize="Medium"/>
+        <Label Text="{Binding VisitItem.MedicalSpeciality}" FontSize="Small"/>
+        <Label Text="Data i godzina" FontSize="Medium"/>
+        <Label Text="{Binding VisitItem.Date}" FontSize="Small"/>
+        <Label Text="Lokalizacja" FontSize="Medium"/>
+        <Label Text="{Binding VisitItem.Location}"/>
+        <Label Text="Szczegóły" FontSize="Medium"/>
+        <Label Text="{Binding VisitItem.Details}"/>
+    </StackLayout>
+</ContentPage>

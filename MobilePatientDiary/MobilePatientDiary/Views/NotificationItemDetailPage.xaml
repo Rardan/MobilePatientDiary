@@ -4,6 +4,10 @@
              x:Class="MobilePatientDiary.Views.NotificationItemDetailPage"
              Title="{Binding Title}">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Usuń" Clicked="DeleteItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+
     <StackLayout Spacing="20" Padding="20">
         <Label Text="Godzina" FontSize="Medium"/>
         <Label Text="{Binding NotificationItem.Time, StringFormat='{}{0:hh\\:mm}'}" FontSize="Small"/>

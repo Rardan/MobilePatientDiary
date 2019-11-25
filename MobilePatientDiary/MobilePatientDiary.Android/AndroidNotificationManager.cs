@@ -64,12 +64,17 @@ namespace MobilePatientDiary.Droid
 
             PendingIntent pendingIntent = PendingIntent.GetActivity(AndroidApp.Context, pendingIntentId, intent, PendingIntentFlags.OneShot);
 
+            NotificationCompat.BigTextStyle textStyle = new NotificationCompat.BigTextStyle();
+            textStyle.BigText(message);
+            textStyle.SetSummaryText("");
+
             NotificationCompat.Builder builder = new NotificationCompat.Builder(AndroidApp.Context, channelId)
                 .SetContentIntent(pendingIntent)
                 .SetContentTitle(title)
                 .SetContentText(message)
                 .SetDefaults((int)NotificationDefaults.Sound | (int)NotificationDefaults.Vibrate)
-                .SetSmallIcon(Resource.Drawable.xamarin_logo);
+                .SetSmallIcon(Resource.Drawable.xamarin_logo)
+                .SetStyle(textStyle);
 
             var notification = builder.Build();
             manager.Notify(messageId, notification);

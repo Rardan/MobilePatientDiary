@@ -30,6 +30,8 @@ namespace MobilePatientDiary.Views
                 return;
 
             await Navigation.PushAsync(new NotificationItemDetailPage(new NotificationItemDetailViewModel(notificationItem)));
+
+            NotificationItemsListView.SelectedItem = null;
         }
 
         async void AddItem_Clicked(object sender, EventArgs e)

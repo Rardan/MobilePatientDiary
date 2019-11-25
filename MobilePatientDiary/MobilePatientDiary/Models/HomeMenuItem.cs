@@ -6,10 +6,10 @@ namespace MobilePatientDiary.Models
 {
     public enum MenuItemType
     {
-     //   Browse,
         Pressure,
         Glucose,
         Notification,
+        Visit,
         About
     }
     public class HomeMenuItem

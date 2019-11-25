@@ -38,6 +38,9 @@ namespace MobilePatientDiary.Views
                     case (int)MenuItemType.Notification:
                         MenuPages.Add(id, new NavigationPage(new NotificationItemsPage()));
                         break;
+                    case (int)MenuItemType.Visit:
+                        MenuPages.Add(id, new NavigationPage(new VisitItemsPage()));
+                        break;
                 }
             }
 

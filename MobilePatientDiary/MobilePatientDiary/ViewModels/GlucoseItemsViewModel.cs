@@ -27,6 +27,13 @@ namespace MobilePatientDiary.ViewModels
                 GlucoseItems.Add(newItem);
                 await App.Database.SaveGlucoseItemAsync(newItem);
             });
+
+            MessagingCenter.Subscribe<GlucoseItemDetailPage, GlucoseItem>(this, "DeleteGlucoseItem", async (obj, i) =>
+            {
+                var oldItem = i as GlucoseItem;
+                GlucoseItems.Remove(oldItem);
+                await App.Database.DeleteGlucoseItemAsync(oldItem);
+            });
         }
 
         async Task ExecuteLoadItemsCommand()
