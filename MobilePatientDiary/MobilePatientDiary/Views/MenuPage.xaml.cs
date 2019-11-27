@@ -23,7 +23,6 @@ namespace MobilePatientDiary.Views
                 new HomeMenuItem {Id = MenuItemType.Glucose, Title="Cukier" },
                 new HomeMenuItem{Id = MenuItemType.Notification, Title="Przypomnienia o lekach" },
                 new HomeMenuItem{Id = MenuItemType.Visit, Title="Wizyty u lekarza"}
-           //     new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
                 
             };
 

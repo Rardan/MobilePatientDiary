@@ -36,10 +36,6 @@ namespace MobilePatientDiary
             InitializeComponent();
 
             notificationManager = DependencyService.Get<INotificationManager>();
-            notificationManager.NotificationReceived += (sender, eventArgs) =>
-            {
-                var evtData = (NotificationEventArgs)eventArgs;
-            };
 
             MainPage = new MainPage();
 

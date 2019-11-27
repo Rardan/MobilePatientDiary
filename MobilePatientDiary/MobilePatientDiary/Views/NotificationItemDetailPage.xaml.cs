@@ -23,12 +23,6 @@ namespace MobilePatientDiary.Views
             InitializeComponent();
 
             BindingContext = this.viewModel = viewModel;
-
-            notificationManager = DependencyService.Get<INotificationManager>();
-            notificationManager.NotificationReceived += (sender, eventArgs) =>
-            {
-                var evtData = (NotificationEventArgs)eventArgs;
-            };
         }
 
         public NotificationItemDetailPage()
@@ -44,19 +38,6 @@ namespace MobilePatientDiary.Views
 
             viewModel = new NotificationItemDetailViewModel(notificationItem);
             BindingContext = viewModel;
-
-            notificationManager = DependencyService.Get<INotificationManager>();
-            notificationManager.NotificationReceived += (sender, eventArgs) =>
-            {
-                var evtData = (NotificationEventArgs)eventArgs;
-            };
-        }
-
-        public void Button_Clicked(object sender, EventArgs e)
-        {
-            string title = $"Przypomnienie o lekach";
-            string message = $"{viewModel.NotificationItem.MedicineName}: {viewModel.NotificationItem.MedicineDose} tabletek";
-            notificationManager.ScheduleNotification(title, message);
         }
 
         async void DeleteItem_Clicked(object sender, EventArgs args)

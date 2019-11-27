@@ -25,7 +25,6 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
-        <Button Text="Testowe powiadomienie" Clicked="Button_Clicked"/>
     </StackLayout>
 
 </ContentPage>
